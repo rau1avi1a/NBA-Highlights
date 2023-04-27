@@ -12,14 +12,15 @@
 <body>
 
     <!--This section shows the search-bar-->
-    <section class="searchbar">
+    <form id="searchbar">
         <div class="input-group input-group-rounded">
-            <input class="input-group-field" type="search">
+            <input class="input-group-field" type="search" id="search">
+        
             <div class="input-group-button">
               <input type="submit" class="button secondary" value="Search">
             </div>
         </div>
-    </section>
+      </form>
 
     <!--This section shows stats-->
     <footer class="responsive-blog-footer">
@@ -65,61 +66,13 @@
       </footer>
 
     <!--This section will show the videos-->
-    <div id="player"></div>
-      
-      
-    <script src="https://apis.google.com/js/api.js"></script>
-<script>
-  /**
-   * Sample JavaScript code for youtube.search.list
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/code-samples#javascript
-   */
+    <div id="videos"></div>
 
-  function authenticate() {
-    return gapi.auth2.getAuthInstance()
-        .signIn({scope: "https://www.googleapis.com/auth/youtube.force-ssl"})
-        .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
-  }
-  function loadClient() {
-    gapi.client.setApiKey("YOUR_API_KEY");
-    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
-  }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
-    return gapi.client.youtube.search.list({
-      "part": [
-        "snippet"
-      ],
-      "maxResults": 3,
-      "order": "date",
-      "type": [
-        "video"
-      ],
-      "videoCaption": "any",
-      "videoEmbeddable": "true",
-      "videoSyndicated": "true"
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
-  });
-</script>
-<button onclick="authenticate().then(loadClient)">authorize and load</button>
-<button onclick="execute()">execute</button>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-    <script src="assets/script.js"></script>
 </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+  <script src="assets/script.js"></script>
 
 </html>

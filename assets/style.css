@@ -11,7 +11,7 @@
     font-size: 0.8rem;
   }
   
-  .searchbar {
+  #searchbar {
     min-width: 30%;
     max-width: 40%;
     margin: 0 auto;

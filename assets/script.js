@@ -1,46 +1,32 @@
-//Client ID: 350515322389-390p6k95m5gh3bg2d3nnlll29jjs8828.apps.googleusercontent.com
+
 //API Key: AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ
 
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
+$(document).ready(function() {
 
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  var apiKey = "AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ";
 
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '390',
-    width: '640',
-    videoId: 'M7lc1UVf-VE',
-    playerVars: {
-      'playsinline': 1
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
-}
+  var video = '';
 
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
+  $("#searchbar").submit(function(event) {
+    event.preventDefault();
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
+    var search = $('#search').val();
+
+    videoSearch(apiKey,search,3);
+  })
+
+  function videoSearch(key,search,maxResults) {
+    $('#videos').empty();
+    $.get('https://www.googleapis.com/youtube/v3/search?key=' + key + '&type=video&part=snippet&maxResults=' + maxResults + '&q=' + search,function(data){
+      console.log(data);
+
+  
+      data.items.forEach(item => {
+        video = `
+        <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+        `
+        $('#videos').append(video);
+      });
+    })
   }
-}
-function stopVideo() {
-  player.stopVideo();
-}
+})
