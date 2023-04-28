@@ -23,11 +23,10 @@ $(document).ready(function() {
   
       data.items.forEach(item => {
         video = `
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+        <iframe id="video" width="420" height="315" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
         `
         $('#videos').append(video);
       });
     })
   }
 })
-

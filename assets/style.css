@@ -70,4 +70,12 @@
     transition: color 0.3s ease-in;
   }
   
-  
+  /*Videos*/
+  #video {
+    padding: 1em;
+  }
+  #video:hover {
+    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s;
+    transform: scale(1.1);
+  }
