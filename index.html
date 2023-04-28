@@ -23,48 +23,90 @@
         </div>
       </form>
 
-    <!--This section shows stats-->
-    <footer class="responsive-blog-footer">
-        <div class="row">
-          <div class="medium-8 columns small-order-2 medium-order-1 about-container">
-            <div class="row">
-              <div class="hide-for-small-only medium-4 columns about-section">
-                <img src="https://placehold.it/250x250">
-              </div>
-              <div class="medium-8 columns about-section">
-                <h4> About Me</h4>
-                <p>paragraph about how amazing and awesome i am paragraph about how amazing and awesome i am paragraph about how amazing and awesome i am</p>
-                <a href="">Read More</a>
-              </div>
-            </div>
+      
+        <section id="main-form">
+          <div class="logo">
+            <img src="assets/images/NBA-logo.png" width="50px" height="120px">
           </div>
-          <div class="small-12 medium-4 columns small-order-1 medium-order-2 mailing-container">
-            <h4 class="mailing-list">Join my mailing list</h4>
-            <input type="text" placeholder="Email Address">
-            <a class="button expanded subscribe-button" href="#">Subscribe Now</a>
+          <div class="formbod">
+            <h1 id="formtitle">NBA STATS</h1>
+            <form id="team-form">
+               <select id="team-search">
+                <option value="1">Atlanta</option>
+                <option value="2">Boston</option>
+                <option value="3">Brooklyn</option>
+                <option value="4">Charlotte</option>
+                <option value="5">Chicago</option>
+                <option value="6">Cleveland</option>
+                <option value="7">Dallas</option>
+                <option value="8">Denver</option>
+                <option value="9">Detroit</option>
+                <option value="10">Golden State</option>
+                <option value="11">Houston</option>
+                <option value="12">Indiana</option>
+                <option value="13">LAC</option>
+                <option value="14">LAL</option>
+                <option value="15">Memphis</option>
+                <option value="16">Miami</option>
+                <option value="17">Milwuakee</option>
+                <option value="18">Minnesota</option>
+                <option value="19">New Orleans</option>
+                <option value="20">New York</option>
+                <option value="21">Oklahoma City</option>
+                <option value="22">Orlando</option>
+                <option value="23">Philadelphia</option>
+                <option value="24">Phoenix</option>
+                <option value="25">Portland</option>
+                <option value="26">Sacramento</option>
+                <option value="27">San Antonio</option>
+                <option value="28">Toronto</option>
+                <option value="29">Utah</option>
+                <option value="30">Washington</option>
+               </select>
+               <select id="season">
+                <option value="2020" id="2020">2020</option>
+                <option value="2021" id="2021">2021</option>
+                <option value="2022" id="2022">2022</option>
+               </select><br>
+               
+                <button id="searchButton" type="submit">Search</button>
+            </form>  
           </div>
-        </div>
-        <div class="row tag-search">
-          <div class="columns">
-            <h4>Search by Tag</h4>
-            <ul class="menu simple tag-section">
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-              <li><a href="">word</a></li>
-            </ul>
+        </section>
+        <section class="team-serch-results hide">
+          <div class="image-container">
+            <img src="assets/images/Hawks.png" id="teamimage" class="hide">
+            <script type="text/javascript">
+                var teamSearchInput = document.querySelector('#team-search');
+                var teamImage = document.querySelector('#teamimage');
+                var images = ["assets/images/Hawks.png", "assets/images/Celtics.png", "assets/images/Nets.png", "assets/images/hornets.png", "assets/images/bulls.png", "assets/images/cavs.png", "assets/images/mavericks.png", "assets/images/Nuggets.png", "assets/images/Pistons.png", "assets/images/Warriors.png", "assets/images/Rockets.png", "assets/images/Pacers.png", "assets/images/Clippers.png", "assets/images/Lakers.png", "assets/images/Memphis.png", "assets/images/Miami.png", "assets/images/Milwuakee.png", "assets/images/Twolves.png", "assets/images/Pelicans.png", "assets/images/Knicks.png", "assets/images/Thunder.png", "assets/images/Magic.png", "assets/images/76ers.png", "assets/images/suns.png", "assets/images/blazers.png", "assets/images/Kings.png", "assets/images/spurs.png", "assets/images/raptors.png", "assets/images/Jazz.png", "assets/images/Wizards.png"];
+                var teamForm = document.querySelector('#team-form');
+              
+
+                function changeImage(){
+                teamImage.classList.remove('hide');
+                let teamSearchInputVal = teamSearchInput.value - 1;
+                let imageIndex = teamSearchInputVal;
+                teamImage.setAttribute("src", images[imageIndex]);
+
+                teamSearchInputVal = '';
+                }
+
+                var submitButton = document.querySelector('#searchButton');
+                submitButton.addEventListener("click", changeImage);
+            </script>
           </div>
-        </div>
-        <div class="row columns flex-container align-justify">
-           <p> all rights reserved</p>
-          <div class="up-arrow">
-            <a href="#top"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+          <div class="basicinfo">
+            <h1 id="teamtitle"></h1>
+            <h3 id="conference"></h3>
+            <h3 id="division"></h3>
           </div>
-        </div>
-      </footer>
+        </section>
+        <section class="game-stats hide">
+            <ol id="games-list">
+              <li>Test</li>
+            </ol>
+        </section>
 
     <!--This section will show the videos-->
     <div id="videos"></div>
