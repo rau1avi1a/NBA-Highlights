@@ -7,10 +7,13 @@ $(document).ready(function() {
 
   var video = '';
 
-  $("#searchbar").submit(function(event) {
+  $("#team-form").submit(function(event) {
     event.preventDefault();
 
-    var search = $('#search').val();
+    var team = $('#team-search option:selected').text();
+    var year = $('#season option:selected').text();
+    var search = "NBA " + team + " " + year;
+    console.log('search item: ' + search);
 
     videoSearch(apiKey,search,3);
   })
@@ -40,38 +43,38 @@ let chosenSeason = season.value;
 var imageContainer = document.querySelector('.image-container');
 var gameStatsSection = document.querySelector('.game-stats');
 var gamesList = document.querySelector('#games-list');
-  function handleSearch(event) {
-    event.preventDefault();
-    var teamTitle = document.querySelector('#teamtitle');
-    var conference = document.querySelector('#conference');
-    var division = document.querySelector('#division');
-    var teamsUrl = 'https://www.balldontlie.io/api/v1/teams/';
-  teamSearchInputVal = teamSearchInput.value;
-    let requestUrl = teamsUrl + teamSearchInputVal;
-    if (!teamSearchInputVal) {
-        return;
-      }
 
-      searchResultSection.classList.remove('hide');
-      gameStatsSection.classList.remove('hide');
-      
+function handleSearch(event) {
+  var teamTitle = document.querySelector('#teamtitle');
+  var conference = document.querySelector('#conference');
+  var division = document.querySelector('#division');
+  var teamsUrl = 'https://www.balldontlie.io/api/v1/teams/';
+teamSearchInputVal = teamSearchInput.value;
+  let requestUrl = teamsUrl + teamSearchInputVal;
+  if (!teamSearchInputVal) {
+      return;
+    }
 
-      fetch(requestUrl)
-       .then(function (response) {
-        return response.json();
-       })
-       
-       .then(function (data) {
-
-       //console.log(data);
-
+    searchResultSection.classList.remove('hide');
+    gameStatsSection.classList.remove('hide');
     
-       teamTitle.textContent = data.full_name;
-        conference.textContent = 'Conference: ' + data.conference;
-        division.textContent = 'Division: ' + data.division;
-        getGames();
-        //getRoster();
-  });
+
+    fetch(requestUrl)
+      .then(function (response) {
+      return response.json();
+      })
+      
+      .then(function (data) {
+
+      //console.log(data);
+
+  
+      teamTitle.textContent = data.full_name;
+      conference.textContent = 'Conference: ' + data.conference;
+      division.textContent = 'Division: ' + data.division;
+      getGames();
+      //getRoster();
+});
       
   }
 
@@ -135,6 +138,11 @@ function getRoster() {
       //document.body.appendChild(li);
       gamesList.appendChild(li);
       
+      if (data.data[i].home_team_score > data.data[i].visitor_team_score) {
+        li.setAttribute("style", "background-color: #2BD670;");
+      } else {
+        li.setAttribute("style", "background-color: #CC3B3B;");
+      }
       
   }
   }
