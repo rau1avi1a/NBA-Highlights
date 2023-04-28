@@ -102,6 +102,8 @@ h3 {
     font-family: 'Oswald', sans-serif;
 }
 
+
+
 p {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
@@ -161,8 +163,10 @@ header {
 }
 
 #team-search {
-   width: 235px;
+   width: 300px;
 }
+
+
 
 
 
@@ -200,11 +204,73 @@ header {
     margin-left: 40px;
 }
 
+
+
+
+
 .game-stats {
-   padding: 3em;
-    width: 80%;
-    margin: 0 auto;
-    background-color: #d9dadb ;
+  padding: 3em;
+   width: 80%;
+   margin: 0 auto;
+   background-color: #d9dadb ;
+ 
+}
+
+
+li {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  margin-top: 3px;
+  padding: 0.5em;
+}
+
+li div {
+color: white;
+font-family: 'Oswald', sans-serif;
+}
+
+
+
+
+
+#team-record h5 {
+font-size: 16px;
+font-weight: 500;
+font-family: 'Oswald', sans-serif;
+color: white;
+}
+
+#team-record {
+  width: 400px;
+  display: flex;
+ background-color: #062659;
+ padding: 0.5em;
+ justify-content: space-between;
+ margin-left: 1.25em;
+
+}
+
+
+
+
+/*
+#team-name-record {
+  margin-right: .25em;
+}
+
+#team-record-year {
+  margin: 0 .45em;
+}
+
+#recordwins {
+margin-right: 0.5em;
+
+}
+
+#recordlosses {
+margin-right: 0.5em;
+
 }
 
 footer{
@@ -218,9 +284,4 @@ footer{
     position: absolute;
     bottom: 0;
 }
-
-li {
-    display: flex;
-    width: 30%;
-    justify-content: space-between;
-}
+*/
