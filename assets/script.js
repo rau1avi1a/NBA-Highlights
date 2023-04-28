@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   function videoSearch(key,search,maxResults) {
     $('#videos').empty();
-    $.get('https://www.googleapis.com/youtube/v3/search?key=' + key + '&type=video&part=snippet&maxResults=' + maxResults + '&q=' + search,function(data){
+    $.get('https://www.googleapis.com/youtube/v3/search?key=' + key + '&type=video&part=snippet&maxResults=' + maxResults + '&q=' + search + '&videoEmbeddable=true&videoSyndicated=true&order=relevance&privacyStatus=public&uploadStatus=processed$publicStatsViewable=true',function(data){
       console.log(data);
 
   
@@ -30,3 +30,4 @@ $(document).ready(function() {
     })
   }
 })
+
