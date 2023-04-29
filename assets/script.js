@@ -39,7 +39,7 @@ var submitButton = document.querySelector('#searchButton');
 var searchResultSection = document.querySelector('.team-serch-results');
 var season = document.querySelector('#season');
 var  teamSearchInputVal;
-let chosenSeason = season.value;
+var chosenSeason;
 var imageContainer = document.querySelector('.image-container');
 var gameStatsSection = document.querySelector('.game-stats');
 var gamesList = document.querySelector('#games-list');
@@ -56,6 +56,7 @@ function handleSearch(event) {
    wins = 0;
    losses = 0;
   teamSearchInputVal = teamSearchInput.value;
+  chosenSeason = season.value;
   let requestUrl = teamsUrl + teamSearchInputVal;
   if (!teamSearchInputVal) {
       return;
