@@ -1,6 +1,8 @@
+//API Key: AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ
+
 $(document).ready(function() {
 
-  var apiKey = "AIzaSyAOC8f5-222ECFM8bdCQM05VzZX1G43t9c";
+  var apiKey = "AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ";
 
   var video = '';
 
@@ -10,7 +12,7 @@ $(document).ready(function() {
     var team = $('#team-search option:selected').text();
     var year = $('#season option:selected').text();
     var search = "NBA " + team + " " + year;
-    console.log('search item: ' + search);
+    //console.log('search item: ' + search);
 
     videoSearch(apiKey,search,3);
   })
@@ -18,7 +20,7 @@ $(document).ready(function() {
   function videoSearch(key,search,maxResults) {
     $('#videos').empty();
     $.get('https://www.googleapis.com/youtube/v3/search?key=' + key + '&type=video&part=snippet&maxResults=' + maxResults + '&q=' + search + '&videoEmbeddable=true&videoSyndicated=true&order=relevance&privacyStatus=public&uploadStatus=processed$publicStatsViewable=true',function(data){
-      console.log(data);
+      //console.log(data);
 
   
       data.items.forEach(item => {
@@ -50,11 +52,12 @@ function handleSearch(event) {
   gamesList.innerText = "";
   teamNameDisplay.textContent = " ";
   seasonDisplay.textContent = "";
-   wins = 0;
-   losses = 0;
+  wins = 0;
+  losses = 0;
   teamSearchInputVal = teamSearchInput.value;
   chosenSeason = season.value;
   let requestUrl = teamsUrl + teamSearchInputVal;
+
   if (!teamSearchInputVal) {
       return;
     }
@@ -69,35 +72,19 @@ function handleSearch(event) {
       })
       
       .then(function (data) {
-
-      //console.log(data);
-
-  
+      var teamid = data.id
       teamTitle.textContent = data.full_name;
       conference.textContent = 'Conference: ' + data.conference;
       division.textContent = 'Division: ' + data.division;
       getGames();
       //getRoster();
+      //getRoster(teamid);
 });
       
   }
 
-/*
-function getRoster() {
-    var RosterUrl = `https://www.balldontlie.io/api/v1/players?team_ids[]=${teamSearchInputVal}&seasons[]=${chosenSeason}&per_page=82`;
+  
 
-    fetch(RosterUrl)
-    .then(function (response) {
-     return response.json();
-    })
-    .then(function (data){
-        console.log(data);
-        
-            
-        
-    })
-}
-*/
 
   function getGames(){
     var gamesUrl = `https://www.balldontlie.io/api/v1/games
@@ -110,10 +97,17 @@ function getRoster() {
     .then(function (data){
         //console.log(data);
         displayScore(data);
-        gameStatsSection.classList.remove('hide');      
+        gameStatsSection.classList.remove('hide');
+        console.log(data);
+        
+
+        
+       
         
     })
   }
+
+
 
 
   var recordDisplayWins = document.querySelector('#recordwins');
@@ -121,49 +115,49 @@ function getRoster() {
   var winPercentage = document.querySelector('#winpercentage');
   var teamNameDisplay = document.querySelector('#team-name-record');
   var seasonDisplay = document.querySelector('#team-record-year');
-
+  var pickedTeamId;
   function displayScore(data){
     let teamSearchInputVal = teamSearchInput.value;
-
-   
-
-    
     for (let i = 0; i < data.data.length; i++) {
     
-
+      //the cosen team isn't always the hometeam so this determines if they are home or away
       if (teamSearchInputVal == data.data[i].home_team.id) {
         selectedTeamScore = data.data[i].home_team_score;
         opponentScore = data.data[i].visitor_team_score;
         selectedTeamName = data.data[i].home_team.full_name;
         oponentName = data.data[i].visitor_team.full_name;
     } else  {
-     
       selectedTeamScore = data.data[i].visitor_team_score;
       opponentScore = data.data[i].home_team_score;
       oponentName = data.data[i].home_team.full_name;
       selectedTeamName = data.data[i].visitor_team.full_name;
     }
 
-
-
+    
+     //console.log(pickedTeamId);
       var li = document.createElement('li');
       var homeTeam = document.createElement('div');
       var awayTeam = document.createElement('div');
       var awayTeamName = document.createElement('div');
+      var statsBtn = document.createElement('button');
+      //statsBtn.classList.add('')
+      statsBtn.innerText = 'view stats'
       homeTeam.innerText = selectedTeamScore;
       awayTeam.innerText = opponentScore;
       awayTeamName.innerText = "vs" + " " + oponentName;
-      //li.innerText = data.data[i].home_team_score;
+
+      //create section for game stats
+
       li.appendChild(homeTeam);
       li.appendChild(awayTeamName);
       li.appendChild(awayTeam);
-     // console.log(data);
-    
-     // let selectedTeamScore;
-      //let opponentScore;
-      //home team isnt always the selected team so it requires another conditional to determine that
-    
-     
+      li.appendChild(statsBtn);
+
+      statsBtn.addEventListener("click", getGamesStats);
+
+      pickedTeamId = data.data[i].id;
+      
+
      if (selectedTeamScore > opponentScore) {
       li.setAttribute("style", "background-color: #2bd670;");
       wins = wins +1;
@@ -178,11 +172,60 @@ function getRoster() {
       winPercentage.textContent = "W-L:" + " " + Math.round((winPercentageVal + Number.EPSILON) * 100)  + "%";
       teamNameDisplay.textContent = selectedTeamName + " ";
       seasonDisplay.textContent = chosenSeason + " " + "Season:";
-      //document.body.appendChild(li);
       gamesList.appendChild(li);
       
       
   }
+
+  
   }
 
+  
+  //
+
+  function getGamesStats(){
+    
+    var statsUrl = 'https://www.balldontlie.io/api/v1/stats?game_ids[]=';
+    let teamId = pickedTeamId;
+    console.log
+    var specificGameStats = statsUrl + teamId;
+    console.log(specificGameStats);
+//console.log(gamesUrl);
+var topScorersList = document.querySelector('#top-scorers');
+    fetch(specificGameStats)
+    .then(function (response) {
+     return response.json();
+    })
+    .then(function (data){
+  
+      console.log(data);
+
+      for (i = 0; i < data.data.length; i++){
+        if (data.data[i].pts == 0 || data.data[i].ast == 0 || data.data[i].reb == 0) {
+          console.log(data);
+        } else {
+          var playerName = document.createElement('li');
+          playerName.innerText = data.data[i].player.first_name + " " + data.data[i].player.last_name + " " +  data.data[i].pts + "pts" + " " +  data.data[i].ast + "ast" + " " +  data.data[i].reb + "reb";
+          console.log(playerName);
+          topScorersList.appendChild(playerName);
+        }
+      
+      }
+      
+      
+      
+      
+
+      //topScorers.innerText = "";
+      
+            
+    })
+  }
+
+  
+
+
   submitButton.addEventListener("click", handleSearch);
+  
+
+
