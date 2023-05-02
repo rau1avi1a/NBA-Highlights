@@ -1,9 +1,6 @@
-
-//API Key: AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ
-
 $(document).ready(function() {
 
-  var apiKey = "AIzaSyCg3NJtdbPsGlws9kB0R1GbJsNJdTaYMNQ";
+  var apiKey = "AIzaSyAOC8f5-222ECFM8bdCQM05VzZX1G43t9c";
 
   var video = '';
 
