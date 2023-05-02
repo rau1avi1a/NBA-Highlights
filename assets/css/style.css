@@ -1,152 +1,85 @@
-/*Searcg bar*/
-.input-group-rounded .input-group-field {
-    width: 30%;
-    margin: 0 auto;
-    border-radius: 5000px 0 0 5000px;
-    padding-left: 1rem;
-  }
-  
-  .input-group-rounded .input-group-button .button {
-    border-radius: 0 5000px 5000px 0;
-    font-size: 0.8rem;
-  }
-  
-  #searchbar {
-    min-width: 30%;
-    max-width: 40%;
-    margin: 0 auto;
-  }
-
-  /*Stats section*/
-  
-.responsive-blog-footer {
-    background: #4a4a4a;
-    padding: 3rem 3rem;
-    color: white;
-  }
-  
-  @media screen and (max-width: 39.9375em) {
-    .responsive-blog-footer h4 {
-      font-size: 1.5rem;
-    }
-  }
-  
-  .responsive-blog-footer p {
-    color: #8a8a8a;
-  }
-  
-  .responsive-blog-footer .mailing-list {
-    margin-bottom: 1.5rem;
-  }
-  
-  .responsive-blog-footer .mailing-container {
-    margin-bottom: 2rem;
-  }
-  
-  .responsive-blog-footer .about-section, .responsive-blog-footer .tag-section {
-    margin-bottom: 2rem;
-  }
-  
-  .responsive-blog-footer .about-section a, .responsive-blog-footer .tag-section a {
-    color: #1779ba;
-  }
-  
-  .responsive-blog-footer .subscribe-button {
-    background-color: #1779ba;
-  }
-  
-  .responsive-blog-footer .subscribe-button:hover {
-    background-color: #146aa3;
-    transition: color 0.3s ease-in;
-  }
-  
-  .responsive-blog-footer .fa-chevron-circle-up {
-    font-size: 3rem;
-    color: #8a8a8a;
-  }
-  
-  .responsive-blog-footer .fa-chevron-circle-up:hover {
-    color: #b0b0b0;
-    transition: color 0.3s ease-in;
-  }
-  
-  /*Videos*/
-  #video {
-    padding: 1em;
-  }
-  #video:hover {
-    transition: all 0.5s ease-in-out;
-    transition: transform 0.5s;
-    transform: scale(1.1);
-  }
-
+/*IMPORTANT*/
 
   .hide {
     display: none !important;
-}
+  }
 
+/*IMPORTANT*/
 
+/*Global styles*/
 
-h1 {
+  h1 {
     font-size: 50px;
     font-family: 'Oswald', sans-serif;
-}
+  }
 
-h2 {
+  h2 {
     font-size: 40px;
     font-family: 'Oswald', sans-serif;
-}
+  }
 
-h3 {
+  h3 {
     font-size: 40px;
     font-family: 'Oswald', sans-serif;
-}
+  }
 
-
-
-p {
+  p {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-}
+  }
 
-header {
+  header {
     background-color: #062659;
     width: 100%;
     height: 100px;
-}
+  }
 
-#heading {
-    text-align: center;
+  li {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    margin-top: 3px;
+    padding: 0.5em;
+  }
+  
+  li div {
     color: white;
-    font-weight: 800;
-    font-size: 65px;
-}
+    font-family: 'Oswald', sans-serif;
+  }  
 
-#main-form {
+/*Global styles*/
+
+/*Search section*/
+
+  #main-form {
     width: 80%;
     margin: 4em auto 1em auto;
     display: flex;
     justify-content: center;
     background-color: #6f263c;
     padding: 5rem 0;
-}
+  }
 
-#formtitle {
+  .logo {
+    margin-right: 1em;
+    margin-top: 1em;
+  }
+  
+  .formbod {
+    margin-left: 1em;
+  }
+
+  #formtitle {
     color: white;
     font-weight: 800;
     font-size: 70px;
-}
+  }
 
-.logo {
-    margin-right: 1em;
-    margin-top: 1em;
-}
+  #team-search {
+    width: 300px;
+  }
 
-.formbod {
-    margin-left: 1em;
-}
-
-#searchButton {
+  #searchButton {
     background-color: white;
     color: #000072;
     margin-top: 3em;
@@ -155,22 +88,18 @@ header {
     padding: 0.5em 2em;
     border: none;
     border-radius: 20px;
-}
+  }
 
-#searchButton:hover {
+  #searchButton:hover {
     background-color: #000072;
-   color: white;
-}
+    color: white;
+  }
 
-#team-search {
-   width: 300px;
-}
+/*Search section*/
 
+/*Team info*/
 
-
-
-
-.team-serch-results {
+  .team-serch-results {
     display: flex;
     width: 80%;
     margin: 0 auto;
@@ -178,80 +107,124 @@ header {
     align-items: center;
     background-color:#003b75;
     height: 400px;
+  }
 
-}
-
-.team-serch-results h1, h3  {
- color: white;
-}
-
-.team-serch-results h3{
+  .team-serch-results h1, h3  {
+    color: white;
+  }
+  
+  .team-serch-results h3{
     font-weight: 300;
     font-size: 30px;
-}
+  }  
 
-
-#teamimage {
-    width: 250px;
-    
-}
-
-.image-container {
+  .image-container {
     margin-right: 40px;
-}
+  }
 
-.basicinfo {
+  #teamimage {
+    width: 250px;
+  }
+
+  .basicinfo {
     margin-left: 40px;
-}
+  }
+
+/*Team info*/
+
+/*Game Stats*/
+
+  .game-stats {
+    padding: 3em;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #d9dadb ;
+  
+  }
+
+  #team-record {
+    width: 400px;
+    display: flex;
+   background-color: #062659;
+   padding: 0.5em;
+   justify-content: space-between;
+   margin-left: 1.25em;
+  }
+
+  #team-record h5 {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+  }
+
+/*Game Stats*/
 
 
+/*Stats section*/
+  .responsive-blog-footer {
+    background: #4a4a4a;
+    padding: 3rem 3rem;
+    color: white;
+  }
 
+  @media screen and (max-width: 39.9375em) {
+    .responsive-blog-footer h4 {
+      font-size: 1.5rem;
+    }
+  }
 
+  .responsive-blog-footer p {
+    color: #8a8a8a;
+  }
 
-.game-stats {
-  padding: 3em;
-   width: 80%;
-   margin: 0 auto;
-   background-color: #d9dadb ;
- 
-}
+  .responsive-blog-footer .mailing-list {
+    margin-bottom: 1.5rem;
+  }
 
+  .responsive-blog-footer .mailing-container {
+    margin-bottom: 2rem;
+  }
 
-li {
-  display: flex;
-  width: 400px;
-  justify-content: space-between;
-  margin-top: 3px;
-  padding: 0.5em;
-}
+  .responsive-blog-footer .about-section, .responsive-blog-footer .tag-section {
+    margin-bottom: 2rem;
+  }
 
-li div {
-color: white;
-font-family: 'Oswald', sans-serif;
-}
+  .responsive-blog-footer .about-section a, .responsive-blog-footer .tag-section a {
+    color: #1779ba;
+  }
 
+  .responsive-blog-footer .subscribe-button {
+    background-color: #1779ba;
+  }
 
+  .responsive-blog-footer .subscribe-button:hover {
+    background-color: #146aa3;
+    transition: color 0.3s ease-in;
+  }
 
+  .responsive-blog-footer .fa-chevron-circle-up {
+    font-size: 3rem;
+    color: #8a8a8a;
+  }
 
+  .responsive-blog-footer .fa-chevron-circle-up:hover {
+    color: #b0b0b0;
+    transition: color 0.3s ease-in;
+  }
+/*Stats section*/
 
-#team-record h5 {
-font-size: 16px;
-font-weight: 500;
-font-family: 'Oswald', sans-serif;
-color: white;
-}
+/*Videos*/
+  #video {
+    padding: 1em;
+  }
 
-#team-record {
-  width: 400px;
-  display: flex;
- background-color: #062659;
- padding: 0.5em;
- justify-content: space-between;
- margin-left: 1.25em;
-
-}
-
-
+  #video:hover {
+    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s;
+    transform: scale(1.1);
+  }
+/*Videos*/
 
 
 /*
