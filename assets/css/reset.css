@@ -3,6 +3,12 @@
    License: none (public domain)
 */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -34,6 +40,14 @@ body {
 ol, ul {
 	list-style: none;
 }
+
+
+li {
+	padding: 0;
+	margin: 0;
+	text-indent: 0;
+}
+
 blockquote, q {
 	quotes: none;
 }
