@@ -34,19 +34,6 @@
     height: 100px;
   }
 
-  li {
-    display: flex;
-    width: 400px;
-    justify-content: space-between;
-    margin-top: 3px;
-    padding: 0.5em;
-  }
-  
-  li div {
-    color: white;
-    font-family: 'Oswald', sans-serif;
-  }  
-
 /*Global styles*/
 
 /*Search section*/
@@ -139,11 +126,15 @@
     width: 80%;
     margin: 0 auto;
     background-color: #d9dadb ;
-  
+  }
+
+  #game-stats-container {
+    width: 900px;
+    margin: 0 auto;
   }
 
   #team-record {
-    width: 400px;
+    width: 98%;
     display: flex;
    background-color: #062659;
    padding: 0.5em;
@@ -157,6 +148,23 @@
     font-family: 'Oswald', sans-serif;
     color: white;
   }
+
+ 
+
+  #games-list li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    padding: 0.5em;
+  }
+
+   li div {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  
 
 /*Game Stats*/
 
@@ -227,34 +235,51 @@
 /*Videos*/
 
 
-/*
-#team-name-record {
-  margin-right: .25em;
+.stats-button {
+  color: white;
 }
 
-#team-record-year {
-  margin: 0 .45em;
+.oponent-name {
+  width: 250px;
+  text-align: center;
+  
 }
 
-#recordwins {
-margin-right: 0.5em;
-
+#game-title {
+  text-align: center;
 }
 
-#recordlosses {
-margin-right: 0.5em;
-
+#final-score {
+  text-align: center;
+  margin-bottom: 3em;
+  color: black;
 }
 
-footer{
-    background-color: #062659;
-    height: 30px;
-    width: 100%;
-    margin-top: 1.5rem;
+
+#game-stats-section {
+  width: 100%;
+  margin: 0 auto;
 }
 
-.footer-bottom {
-    position: absolute;
-    bottom: 0;
+#game-stats-container {
+  display: flex;
+  justify-content: center;
+  
+  width: 80%;
+  margin: 0 auto;
 }
-*/
+
+#game-stats-container ul li {
+  width: 90%;
+}
+
+@media screen and (max-width: 576px){
+  #game-stats-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    width: 80%;
+    margin: 0 auto;
+  }
+}
