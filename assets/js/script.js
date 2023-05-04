@@ -13,7 +13,7 @@ $(document).ready(function () {
     var search = "NBA " + team + " " + year;
     //console.log('search item: ' + search);
 
-    videoSearch(apiKey, search, 3);
+    videoSearch(apiKey, search, 6);
   })
 
   function videoSearch(key, search, maxResults) {

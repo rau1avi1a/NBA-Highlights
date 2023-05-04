@@ -232,6 +232,14 @@
     transition: transform 0.5s;
     transform: scale(1.1);
   }
+
+  #videos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
 /*Videos*/
 
 
