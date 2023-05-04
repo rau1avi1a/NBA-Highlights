@@ -134,7 +134,7 @@
   }
 
   #team-record {
-    width: 800px;
+    width: 98%;
     display: flex;
    background-color: #062659;
    padding: 0.5em;
@@ -152,7 +152,7 @@
  
 
   #games-list li {
-    width: 800px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 3px;
@@ -257,17 +257,29 @@
 
 
 #game-stats-section {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
 #game-stats-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  
   width: 80%;
   margin: 0 auto;
 }
 
 #game-stats-container ul li {
-  width: 300px;
+  width: 90%;
+}
+
+@media screen and (max-width: 576px){
+  #game-stats-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    width: 80%;
+    margin: 0 auto;
+  }
 }
