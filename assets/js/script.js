@@ -45,7 +45,11 @@ var gamesList = document.querySelector('#games-list');
 
 var gamesStatsSection = document.querySelector('#game-stats-section');
 
+var topScorersList = document.querySelector('#top-scorers');
+var oponentScorersList = document.querySelector('#oponent-player-stats');
+
 function handleSearch(event) {
+
   var teamTitle = document.querySelector('#teamtitle');
   var conference = document.querySelector('#conference');
   var division = document.querySelector('#division');
@@ -55,6 +59,8 @@ function handleSearch(event) {
   seasonDisplay.textContent = "";
   wins = 0;
   losses = 0;
+  topScorersList.textContent = "";
+  oponentScorersList.textContent = "";
   gameTitle.textContent = "";
 finalScoreTitle.textContent = "";
 chosenTeamTitle.textContent = "";
@@ -198,13 +204,20 @@ function displayScore(data) {
 
 gamesList.addEventListener("click", function(event) {
   var element = event.target;
+  $('#games-stats-section').empty();
 
   // Checks if element is a button
   if (element.matches("button") === true) {
     // Get its data-index value and remove the todo element from the list
     var theGame = element.parentElement.getAttribute("gameidentifier");
+    var getopponentName = element.parentElement.children;
+    console.log (getopponentName);
+    var abbreviationHome = getopponentName[0].textContent;
+    var TheopponentName = getopponentName[1].textContent;
+    var abbreviationAway = getopponentName[2].textContent;
+    console.log (TheopponentName);
     
-    getGamesStats(theGame);
+    getGamesStats(theGame, TheopponentName, abbreviationAway, abbreviationHome);
     
     
   }
@@ -229,25 +242,28 @@ let finalScoreTitle = document.querySelector('#final-score');
 let chosenTeamTitle = document.querySelector('#picked-team-title');
 let oponentTeamTitle = document.querySelector('#oponent-team-title');
 
-function getGamesStats(theGame) {
-
-
+function getGamesStats(theGame, TheopponentName, abbreviationAway, abbreviationHome) {
   var statsUrl = 'https://www.balldontlie.io/api/v1/stats?game_ids[]=';
   //let currentGame = gameId;
   let currentGame = theGame;
+  let opponentName = TheopponentName;
   let perPage = '&per_page=50';
   var specificGameStats = statsUrl + currentGame + perPage;
   
   
 
-  var topScorersList = document.querySelector('#top-scorers');
-  var oponentScorersList = document.querySelector('#oponent-player-stats');
+
+  $('#games-stats-section').empty();
+
+  
   fetch(specificGameStats)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
+
       console.log(data);
+
       
     
 
@@ -267,14 +283,16 @@ function getGamesStats(theGame) {
     })
 
        
-    gameTitle.innerText = selectedTeamName + " " + "vs" + " " + oponentName;
-    finalScoreTitle.innerText = selectedTeamAbr + ": " + selectedTeamScore + " " + oponentTeamAbr + ": " +  opponentScore;
+    gameTitle.innerText = selectedTeamName + " " + opponentName;
+    finalScoreTitle.innerText = abbreviationHome + " " + abbreviationAway;
     
     chosenTeamTitle.textContent = selectedTeamName;
-    oponentTeamTitle.textContent = oponentName;
+    oponentTeamTitle.textContent = opponentName;
+
+    topScorersList.textContent = "";
+    oponentScorersList.textContent = "";
 
 }
-
 
 
 submitButton.addEventListener("click", handleSearch);
